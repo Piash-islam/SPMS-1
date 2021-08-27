@@ -1,7 +1,6 @@
 <?php
     include '../php/middleware.php';
     include '../php/f_dashboard.php';
-    include '../php/d_plo.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

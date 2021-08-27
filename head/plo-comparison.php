@@ -1,6 +1,7 @@
 <?php
     include '../php/middleware.php';
-    include '../php/d_plo.php';
+    include '../php/h_dashboard.php';
+    include '../php/h_plo.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,8 +45,8 @@
           <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
         </div>
         <div class="info-wrapper">
-          <h4 class="user-name"><?php echo $_SESSION["name"]; ?></h4>
-        </div>
+            <h4 class="user-name"><?php echo "$faculty_name" ?></h4>
+          </div>
       </div>
       <ul class="navigation-menu">
         <li>

@@ -1,13 +1,15 @@
 <?php
     include '../php/middleware.php';
-    
+    include '../php/h_dashboard.php';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dashboard | Head</title>
+    <title>Dashboard | Dean</title>
 
     <link rel="stylesheet" href="../assets/vendors/iconfonts/mdi/css/materialdesignicons.css">
     <link rel="stylesheet" href="../assets/vendors/css/vendor.addons.css">
@@ -26,7 +28,7 @@
       </div>
       <div class="t-header-content-wrapper">
         <div class="t-header-content">
-        <h4>Dashboard</h4>
+          <h4>Dashboard</h4>
           <button class="t-header-toggler t-header-mobile-toggler d-block d-lg-none">
             <i class="mdi mdi-menu"></i>
           </button>
@@ -42,11 +44,7 @@
             <img class="profile-img img-lg rounded-circle" src="../assets/images/profile-pic.png" alt="profile image">
           </div>
           <div class="info-wrapper">
-            <h4 class="user-name"><?php echo $_SESSION["name"]; ?></h4>
-            <?php
-              echo "<small class='text-center mt-3'>$school_name</small>"
-            ?>
-            
+            <h4 class="user-name"><?php echo "$faculty_name" ?></h4>
           </div>
           <div class="row showcase_row_area mt-4">
             <div class="col-md-4 text-right">
@@ -61,7 +59,7 @@
               </div>
             </div>
             <div class="col-md-4 text-left">
-              <label for="inputType14">Head</label>
+              <label for="inputType14">Dean</label>
             </div>
           </div>
         </div>
@@ -109,7 +107,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                          <p class="card-title"><?php echo $enrolled; ?></p>
+                        <p class="card-title"><?php echo $stds; ?></p>
                         </div>
                         <h5 class="text-black">Enrolled Student</h5>
                       </div>
@@ -126,7 +124,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                          <p class="card-title"><?php echo $prog_count; ?></p>
+                        <p class="card-title"><?php echo $progs; ?></p>
                         </div>
                         <h5 class="text-black">Total Program</h5>
                       </div>
@@ -143,7 +141,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex justify-content-between">
-                          <p class="card-title"><?php echo $crs_count; ?></p>
+                        <p class="card-title"><?php echo $crss; ?></p>
                         </div>
                         <h5 class="text-black">Total Courses</h5>
                       </div>
@@ -157,6 +155,8 @@
             </div>
           </div>
         </div>
+        <!-- content viewport ends -->
+        <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="row">
             <div class="col-sm-6 text-center text-sm-right order-sm-1">
@@ -170,9 +170,13 @@
             </div>
           </div>
         </footer>
+        <!-- partial -->
       </div>
+      <!-- page content ends -->
     </div>
-
+    <!--page body ends -->
+    <!-- SCRIPT LOADING START FORM HERE /////////////-->
+    <!-- plugins:js -->
     <script src="../assets/vendors/js/core.js"></script>
     <!-- endinject -->
     <!-- Vendor Js For This Page Ends-->

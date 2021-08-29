@@ -1,6 +1,11 @@
 <?php
     include 'mysql.php';
 
+    $id = $_SESSION['id'];
+
+    $query = "SELECT admin.name FROM admin WHERE id = $id";
+    $admin_name = $conn->query($query)->fetch_row()[0];
+
      if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['id']) {
         
         $program = $_POST['program'];

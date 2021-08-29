@@ -71,6 +71,35 @@
                 <div class="grid">
                   <div class="grid-body">
                     <h2 class="grid-title">Course Wise PLO Achievement</h2>
+                    <form method="GET">
+                        <div class="row text-right">
+                          <div class="col-5">
+                            <div class="form-group row showcase_row_area">
+                              <div class="col-md-3 showcase_text_area">
+                                <label>Type</label>
+                              </div>
+                              <div class="col-md-9 showcase_content_area">
+                                <select class="custom-select" name="type">
+                                  <option value="course" selected>Course</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-5">
+                            <div class="form-group row showcase_row_area">
+                              <div class="col-md-3 showcase_text_area">
+                                <label>Query</label>
+                              </div>
+                              <div class="col-md-9 showcase_content_area">
+                              <input type="text" class="form-control" id="name" name="name" placeholder="Type Query" <?php if(isset($_GET['name'])){ echo "value='".$_GET['name']."'"; } ?>>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-2">
+                            <button class="btn btn-primary btn-rounded" type="submit"><i class="mdi mdi-arrow-right-thick"></i></button>
+                          </div>
+                        </div>
+                      </form>
                     <div class="item-wrapper">
                       <canvas id="course-plo" height="100"></canvas>
                     </div>
@@ -111,54 +140,113 @@
     <!-- endbuild -->
     <script>
       
+      // var ctx = $('#course-plo');
+      // var myChart = new Chart(ctx, {
+      //     type: 'bar',
+      //     data: {
+      //         labels: [
+      //           <?php
+      //             foreach($crss as $crs => $d){
+      //               echo "'".strtoupper($crs)."', ";
+      //             }
+      //           ?>
+      //         ],
+      //         datasets: [
+      //         {
+      //             label: 'Achieved',
+      //             data: [
+      //               <?php
+      //                 foreach($crss as $crs => $d){
+      //                   echo $d['ach'].", ";
+      //                 }
+      //               ?>
+      //             ],
+      //             backgroundColor: ['#65afc0'],
+      //         borderColor: ['#65afc03'],
+      //         borderWidth: 1
+      //         },
+      //         {
+      //             label: 'Failed',
+      //             data: [
+      //               <?php
+      //                 foreach($crss as $crs => $d){
+      //                   echo $d['atm'].", ";
+      //                 }
+      //               ?>
+      //             ],
+      //             backgroundColor: ['#65afc0'],
+      //             borderColor: ['#65afc03'],
+      //             borderWidth: 1
+      //         }
+      //       ]
+      //     },
+      //     options: {
+      //     scales: {
+      //         y: {
+      //             beginAtZero: true
+      //         }
+      //     }
+      // }
+      // });
+
+
       var ctx = $('#course-plo');
-      var myChart = new Chart(ctx, {
-          type: 'bar',
-          data: {
-              labels: [
+  var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+          labels: [
+            <?php
+              if(isset($_GET['name'])){
+                foreach($plo_attemptedE as $k => $v){
+                  echo "'PLO$k',";
+                }
+              }              
+            ?>
+          ],
+          datasets: [
+            {
+              label: 'Achieved',
+              data: [
                 <?php
-                  foreach($crss as $crs => $d){
-                    echo "'".strtoupper($crs)."', ";
-                  }
+                  if(isset($_GET['name'])){
+                    foreach($plo_attemptedE as $k => $v){
+                      echo $plo_achievedE[$k].",";
+                    }
+                  }  
+                  
                 ?>
               ],
-              datasets: [
-              {
-                  label: 'Achieved',
-                  data: [
-                    <?php
-                      foreach($crss as $crs => $d){
-                        echo $d['ach'].", ";
-                      }
-                    ?>
-                  ],
-                  backgroundColor: ['#65afc0'],
-              borderColor: ['#65afc03'],
+              backgroundColor: ['#5D3FD3'],
+              borderColor: ['#5D3FD3'],
               borderWidth: 1
-              },
-              {
-                  label: 'Failed',
-                  data: [
-                    <?php
-                      foreach($crss as $crs => $d){
-                        echo $d['atm'].", ";
-                      }
-                    ?>
-                  ],
-                  backgroundColor: ['#65afc0'],
-                  borderColor: ['#65afc03'],
-                  borderWidth: 1
-              }
-            ]
+             
+              
           },
-          options: {
+          {
+              label: 'Failed',
+              data: [
+                <?php
+                  if(isset($_GET['name'])){
+                    foreach($plo_attemptedE as $k => $v){
+                      echo $plo_attemptedE[$k]-$plo_achievedE[$k] .",";
+                    }
+                  }                   
+                ?>
+              ],
+              backgroundColor: ['#1b4f72'],
+              borderColor: ['#1b4f72'],
+              borderWidth: 1
+          }
+        ]
+      },
+      options: {
           scales: {
               y: {
                   beginAtZero: true
               }
           }
       }
-      });
+  });
 
 
     </script>
